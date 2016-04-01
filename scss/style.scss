@@ -99,3 +99,104 @@ img {
 /**
  * YOUR CODE HERE
  */
+
+body {
+    position: relative;
+}
+
+ #logo-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #f6f6f6;
+ }
+
+#logo {
+    width: 25%;
+    height: 25%;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #f6f6f6;
+}
+
+/*Home page*/
+
+#products-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#donuts-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+#donuts-img {
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+    align-self: center;
+}
+
+#kolaches-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+#kolaches-img {
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+    align-self: center;
+}
+
+#croissants-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+#croissants-img {
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+    align-self: center;
+}
+
+#burritos-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40%;
+}
+
+#burritos-img {
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+    align-self: center;
+}
+
+/*about*/
+#about {
+    background-color: lightgrey;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+}
+
