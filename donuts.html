@@ -17,17 +17,28 @@
 	</span>
 
     <div id="donuts-container">
-        <div id="glazed-iced-container">
-            <span class="donut-label">Glazed/Iced</span>
-            <div id="glazed-iced"></div>
+        <div id="original-container">
+            <span class="item-label">Original Donuts</span>
+            <div id="original-donuts"></div>
         </div>
 
-        <div id="vanilla-cakes"></div>
-        <div id="buttermilks"></div>
+        <div id="cake-container">
+            <span class="item-label">Cake Donuts</span>
+            <div id="cake-donuts"></div>
+        </div>
+        <!-- <div id="buttermilks"></div>
         <div id="french-crullers"></div>
         <div id="big-rolls"></div>
-        <div id="filled-donuts"></div>
+        <div id="filled-donuts"></div> -->
     </div>
+
+    <script type="text/template" id="donut-template">
+        <div class="donuts-wrapper">
+            <% _.each(donuts, function(donut){ %>
+                <div class="original-donut-name"><%= donut.name %></div>
+            <% }); %>
+        </div>
+    </script>
 
     <script type="text/javascript" src="./dist/app-browserify.js"></script>
 </body>

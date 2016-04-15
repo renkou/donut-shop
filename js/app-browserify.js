@@ -9,6 +9,10 @@ var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
 
+//use function like this to import other js files or functions
+// var newJs = require('./kolaches');
+// var newJs = require('./kolaches').test;
+
 // just Node?
 // var fetch = require('node-fetch')
 // Browserify?
@@ -27,30 +31,137 @@ var Backbone = require('backbone');
     // new Router()
 // }
 
-/////////////donuts//////////////////
-var glazedAndIcedArray = ['Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Maple Iced', 'Plain Sugar', 'Cinnamon Sugar', 'Powdered Sugar', 'Crumb'];
-var vanillaCakeArray = ['Plain', 'Blueberry', 'Blueberry Glazed', 'Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Plain Sugar', 'Cinnamon Sugar'];
-var buttermilkArray = ['Plain', 'Glazed', 'Chocolate Iced'];
-var frenchCrullerArray = ['Glazed', 'Chocolate Iced'];
-var bigRollArray = ['Eclair', 'Cinnamon Roll', 'Cinnamon Twist', 'Apple Fritter'];
-var filledArray = ['Bavarian', 'Strawberry', 'Chocolate', 'Lemon'];
+Backbone.Model.prototype.idAttribute = '_id';
 
+/////////////donuts//////////////////
+// var originalDonutArray = ['Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Maple Iced', 'Plain Sugar', 'Cinnamon Sugar', 'Powdered Sugar', 'Crumb'];
+// var cakeArray = ['Plain', 'Blueberry', 'Blueberry Glazed', 'Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Plain Sugar', 'Cinnamon Sugar'];
+// var buttermilkArray = ['Plain', 'Glazed', 'Chocolate Iced'];
+// var frenchCrullerArray = ['Glazed', 'Chocolate Iced'];
+// var bigRollArray = ['Eclair', 'Cinnamon Roll', 'Cinnamon Twist', 'Apple Fritter'];
+// var filledArray = ['Bavarian', 'Strawberry', 'Chocolate', 'Lemon'];
+
+var items = [
+	{itemType: 'original', name: 'Glazed'},
+
+	{itemType: 'original', name: 'Chocolate Iced'},
+
+	{itemType: 'original', name: 'Chocolate Sprinkle'},
+
+	{itemType: 'cake', name: 'Plain'},
+
+	{itemType: 'cake', name: 'Blueberry'}
+];
 
 ///////////kolaches//////////////////
-var kolachesArray = ['Sausage & Cheese', 'Jumbo Sausage & Cheese', 'Plain Sausage', 'Beef Sausage', 'Jalapeño Sausage & Cheese', 'Boudain Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
+// var kolachesArray = ['Sausage & Cheese', 'Jumbo Sausage & Cheese', 'Plain Sausage', 'Beef Sausage', 'Jalapeño Sausage & Cheese', 'Boudain Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
 
 ///////////croissants////////////////
-var croissantsArray = ['Bacon, Egg & Cheese', 'Sausage Patty, Egg & Cheese', 'Plain', 'Sausage & Cheese', 'Jalapeño Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
+// var croissantsArray = ['Bacon, Egg & Cheese', 'Sausage Patty, Egg & Cheese', 'Plain', 'Sausage & Cheese', 'Jalapeño Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
 
 ///////////more items////////////////
-var moreItemsArray =  ['Sausage, Egg & Cheese Biscuit', 'Cream Cheese Danish', 'Donut Holes', 'Community Coffee','Cappachinos'];
-var burritosArray = ['Sausage, Egg & Cheese', 'Bacon, Egg & Cheese', 'Potato, Egg & Cheese'];
-var muffinsArray = ['Blueberry', 'Banana', 'Chocolate'];
+// var moreItemsArray =  ['Sausage, Egg & Cheese Biscuit', 'Cream Cheese Danish', 'Donut Holes', 'Community Coffee','Cappachinos'];
+// var burritosArray = ['Sausage, Egg & Cheese', 'Bacon, Egg & Cheese', 'Potato, Egg & Cheese'];
+// var muffinsArray = ['Blueberry', 'Banana', 'Chocolate'];
 
 /////////////////////////////////////////////////
 
+/////////////filter items/////////
+// var originalList = _.filter(items, function(donut){
+// 	return donut.itemType === 'original';
+// });
 
+// var cakeList = _.filter(items, function(donut){
+// 	return donut.itemType === 'cake';
+// });
+///////////models////////////////
+var ItemModel = Backbone.Model.extend({
+	// itemType: '',
+	// name: ''
+	//create a way to fetch items by array name
 
+});
+
+var DonutModel = Backbone.Model.extend({
+	// url: function(){
+	// 	return "http://localhost:3000/api/donuts"
+	// }
+
+	// itemType: '',
+	// name: ''
+	url: "http://localhost:3000/api/donuts"
+});
+
+///////collections/////////////////
+
+var DonutCollection = Backbone.Collection.extend({
+	model: DonutModel,
+	url: "http://localhost:3000/api/donuts"
+});
+
+var donutCollection = new DonutCollection();
+
+/////////////////views/////////////////
+
+var DonutView = Backbone.View.extend({
+	el: '#donuts-container',
+
+	initialize: function(){
+		var originalView = new OriginalListView();
+		originalView.render();
+
+		// var cakeView = new CakeListView();
+		// cakeView.render();
+	}
+});
+
+var OriginalListView = Backbone.View.extend({
+	el: '#original-donuts',
+
+	render: function(){
+		var self = this;
+
+		// var originalCollection = new DonutCollection(originalList);
+
+		// var originalDonuts = new DonutModel();
+		// can you pass something into collection
+		var testCollection = new DonutCollection();
+
+		$.when(testCollection.fetch()).done(function(originalDonuts) {
+			console.log(originalDonuts);
+			var originalArray = _.filter(originalDonuts, function(donut){
+				return donut.itemType === 'original';
+			});
+
+			self.$el.html(self.donutTemplate({ donuts: originalArray }));
+		});
+        // this.$el.html(self.donutTemplate({ donuts: originalCollection.models }));
+        // return this;
+	},
+
+	donutTemplate: _.template($('#donut-template').html(), {})
+});
+
+var CakeListView = Backbone.View.extend({
+	el: '#cake-donuts',
+
+	// initialize: function(){
+	// 	this.showoriginalDonuts();
+	// },
+
+	render: function(){
+		var self = this;
+
+		var cakeCollection = new DonutCollection(cakeList);
+
+        this.$el.html(self.donutTemplate({ donuts: cakeCollection.models }));
+        return this;
+	},
+
+	donutTemplate: _.template($('#donut-template').html(), {})
+});
+
+var donutView = new DonutView();
 
 
 
