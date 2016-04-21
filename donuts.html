@@ -35,7 +35,10 @@
     <script type="text/template" id="donut-template">
         <div class="donuts-wrapper">
             <% _.each(donuts, function(donut){ %>
-                <div class="original-donut-name"><%= donut.name %></div>
+                <div class="original-donut-picture">
+                    <img src="<%= donut.link %>" />
+                </div>
+                <div class="original-donut-name"><%= donut.title %></div>
             <% }); %>
         </div>
     </script>

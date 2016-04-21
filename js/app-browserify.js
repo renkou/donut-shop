@@ -27,12 +27,12 @@ var Backbone = require('backbone');
 // window.addEventListener('load', app)
 
 // function app() {
-    // start app
-    // new Router()
+// start app
+// new Router()
 // }
 
-Backbone.Model.prototype.idAttribute = '_id';
-
+// Backbone.Model.prototype.idAttribute = '_id';
+var clientid = 'ab1a596d4c80874';
 /////////////donuts//////////////////
 // var originalDonutArray = ['Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Maple Iced', 'Plain Sugar', 'Cinnamon Sugar', 'Powdered Sugar', 'Crumb'];
 // var cakeArray = ['Plain', 'Blueberry', 'Blueberry Glazed', 'Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Plain Sugar', 'Cinnamon Sugar'];
@@ -42,15 +42,15 @@ Backbone.Model.prototype.idAttribute = '_id';
 // var filledArray = ['Bavarian', 'Strawberry', 'Chocolate', 'Lemon'];
 
 var items = [
-	{itemType: 'original', name: 'Glazed'},
+    { itemType: 'original', name: 'Glazed' },
 
-	{itemType: 'original', name: 'Chocolate Iced'},
+    { itemType: 'original', name: 'Chocolate Iced' },
 
-	{itemType: 'original', name: 'Chocolate Sprinkle'},
+    { itemType: 'original', name: 'Chocolate Sprinkle' },
 
-	{itemType: 'cake', name: 'Plain'},
+    { itemType: 'cake', name: 'Plain' },
 
-	{itemType: 'cake', name: 'Blueberry'}
+    { itemType: 'cake', name: 'Blueberry' }
 ];
 
 ///////////kolaches//////////////////
@@ -76,27 +76,23 @@ var items = [
 // });
 ///////////models////////////////
 var ItemModel = Backbone.Model.extend({
-	// itemType: '',
-	// name: ''
-	//create a way to fetch items by array name
+    // itemType: '',
+    // name: ''
+    //create a way to fetch items by array name
 
 });
 
 var DonutModel = Backbone.Model.extend({
-	// url: function(){
-	// 	return "http://localhost:3000/api/donuts"
-	// }
 
-	// itemType: '',
-	// name: ''
-	url: "http://localhost:3000/api/donuts"
 });
 
 ///////collections/////////////////
 
 var DonutCollection = Backbone.Collection.extend({
-	model: DonutModel,
-	url: "http://localhost:3000/api/donuts"
+    model: DonutModel,
+
+    url: "https://api.imgur.com/3/album/iQVb1/images",
+
 });
 
 var donutCollection = new DonutCollection();
@@ -104,75 +100,66 @@ var donutCollection = new DonutCollection();
 /////////////////views/////////////////
 
 var DonutView = Backbone.View.extend({
-	el: '#donuts-container',
+    el: '#donuts-container',
 
-	initialize: function(){
-		var originalView = new OriginalListView();
-		originalView.render();
+    initialize: function() {
+        var originalView = new OriginalListView();
+        originalView.render();
 
-		// var cakeView = new CakeListView();
-		// cakeView.render();
-	}
+        // var cakeView = new CakeListView();
+        // cakeView.render();
+    }
 });
 
 var OriginalListView = Backbone.View.extend({
-	el: '#original-donuts',
+    el: '#original-donuts',
 
-	render: function(){
-		var self = this;
+    render: function() {
+        var self = this;
 
-		// var originalCollection = new DonutCollection(originalList);
+        // var originalCollection = new DonutCollection(originalList);
 
-		// var originalDonuts = new DonutModel();
-		// can you pass something into collection
-		var testCollection = new DonutCollection();
+        // var originalDonuts = new DonutModel();
+        // can you pass something into collection
+        var testCollection = new DonutCollection();
 
-		$.when(testCollection.fetch()).done(function(originalDonuts) {
-			console.log(originalDonuts);
-			var originalArray = _.filter(originalDonuts, function(donut){
-				return donut.itemType === 'original';
-			});
+        $.when(testCollection.fetch({
+        	headers: {
+		 		Authorization: 'Client-ID ' + clientid,
+				Accept: 'application/json'
+			}
+		})).done(function(originalDonuts) {
+            console.log(originalDonuts);
+            var originalArray = _.filter(originalDonuts.data, function(donut) {
+                return donut.description === 'original';
+            });
 
-			self.$el.html(self.donutTemplate({ donuts: originalArray }));
-		});
+            self.$el.html(self.donutTemplate({ donuts: originalArray }));
+        });
         // this.$el.html(self.donutTemplate({ donuts: originalCollection.models }));
         // return this;
-	},
+    },
 
-	donutTemplate: _.template($('#donut-template').html(), {})
+    donutTemplate: _.template($('#donut-template').html(), {})
 });
 
 var CakeListView = Backbone.View.extend({
-	el: '#cake-donuts',
+    el: '#cake-donuts',
 
-	// initialize: function(){
-	// 	this.showoriginalDonuts();
-	// },
+    // initialize: function(){
+    // 	this.showoriginalDonuts();
+    // },
 
-	render: function(){
-		var self = this;
+    render: function() {
+        var self = this;
 
-		var cakeCollection = new DonutCollection(cakeList);
+        var cakeCollection = new DonutCollection(cakeList);
 
         this.$el.html(self.donutTemplate({ donuts: cakeCollection.models }));
         return this;
-	},
+    },
 
-	donutTemplate: _.template($('#donut-template').html(), {})
+    donutTemplate: _.template($('#donut-template').html(), {})
 });
 
 var donutView = new DonutView();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
