@@ -106,8 +106,8 @@ var DonutView = Backbone.View.extend({
         var originalView = new OriginalListView();
         originalView.render();
 
-        // var cakeView = new CakeListView();
-        // cakeView.render();
+        var cakeView = new CakeListView();
+        cakeView.render();
     }
 });
 
@@ -117,27 +117,20 @@ var OriginalListView = Backbone.View.extend({
     render: function() {
         var self = this;
 
-        // var originalCollection = new DonutCollection(originalList);
+        var originalCollection = new DonutCollection();
 
-        // var originalDonuts = new DonutModel();
-        // can you pass something into collection
-        var testCollection = new DonutCollection();
-
-        $.when(testCollection.fetch({
+        $.when(originalCollection.fetch({
         	headers: {
 		 		Authorization: 'Client-ID ' + clientid,
 				Accept: 'application/json'
 			}
-		})).done(function(originalDonuts) {
-            console.log(originalDonuts);
-            var originalArray = _.filter(originalDonuts.data, function(donut) {
+		})).done(function(DonutObject) {
+            var originalArray = _.filter(DonutObject.data, function(donut) {
                 return donut.description === 'original';
             });
 
             self.$el.html(self.donutTemplate({ donuts: originalArray }));
         });
-        // this.$el.html(self.donutTemplate({ donuts: originalCollection.models }));
-        // return this;
     },
 
     donutTemplate: _.template($('#donut-template').html(), {})
@@ -146,17 +139,23 @@ var OriginalListView = Backbone.View.extend({
 var CakeListView = Backbone.View.extend({
     el: '#cake-donuts',
 
-    // initialize: function(){
-    // 	this.showoriginalDonuts();
-    // },
-
     render: function() {
         var self = this;
 
-        var cakeCollection = new DonutCollection(cakeList);
+        var cakeCollection = new DonutCollection();
 
-        this.$el.html(self.donutTemplate({ donuts: cakeCollection.models }));
-        return this;
+        $.when(cakeCollection.fetch({
+        	headers: {
+		 		Authorization: 'Client-ID ' + clientid,
+				Accept: 'application/json'
+			}
+		})).done(function(DonutObject) {
+            var cakeArray = _.filter(DonutObject.data, function(donut) {
+                return donut.description === 'cake';
+            });
+
+            self.$el.html(self.donutTemplate({ donuts: cakeArray }));
+        });
     },
 
     donutTemplate: _.template($('#donut-template').html(), {})

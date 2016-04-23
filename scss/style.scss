@@ -207,3 +207,14 @@ body {
     color: green;
     font-size: 2em;
 }
+
+.donuts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.donuts-content {
+    display: flex;
+    flex-direction: column;
+}
