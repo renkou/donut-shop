@@ -105,6 +105,31 @@ body {
     position: relative;
 }
 
+.menu {
+    margin-top: 20%;
+}
+
+.logo-text {
+    margin-top: 5%;
+    padding-left: 10%;
+}
+
+@media (max-width: 767px) {
+    .menu{
+        margin-top: 1%;
+        margin-bottom: 1%;
+        text-align: center;
+    }
+
+    .logo-text {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/*///////////////////////////////////////////////////////////////////////*/
  /*#logo-container {
     display: flex;
     justify-content: center;

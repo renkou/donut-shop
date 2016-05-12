@@ -10,16 +10,14 @@
 <body>
 <div class="container">
 	<div id="top-container row">
-		<div class="col-xs-2">
-			<a href="./index.html">
-				<img id="shop-logo" class="img-responsive" src="./img/logo.jpg" />
-			</a>
+		<div class="col-sm-2">
+			<img id="shop-logo" class="img-responsive hidden-xs" src="./img/logo.jpg" />
 		</div>
-		<div class="col-xs-6">
-			<img class="img-responsive center-block" src="./img/logo-text.jpg">
+		<div class="col-sm-7">
+			<img class="logo-text img-responsive center-block" src="./img/logo-text.jpg">
 		</div>
-		<div class="col-xs-4">
-			<button class="btn btn-default center-block">View Our Menu</button>
+		<div class="col-sm-3">
+			<button class="menu btn btn-default center-block">Add event handler</button>
 		</div>
 	</div>
 </div>
@@ -81,8 +79,27 @@
 	    </a> -->
     </div>
 
-    <footer id="about">
-    	<span>hours/address/contact/google map</span>
+    <footer id="about-container" class="container">
+	    <div class="row">
+		    <div class="col-sm-6">
+		    	<span id="times-contact">Open 7 Days A Week <br />
+		    		Monday - Saturday: 5:00AM - 1:30PM <br />
+		    		Sunday: 6:00AM - 1:30PM <br />
+		    		Tel: (281)-491-8819
+		    	</span>
+		    </div>
+		    <div class="col-sm-6">
+				<span id="map" class="pull-right">		    	
+			    	<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:200px;width:300px;'><div id='gmap_canvas' style='height:200px;width:300px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="http://freedirectorysubmissionsites.com/">directory submission sites</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(29.642580252770323,-95.58182622142637),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(29.642580252770323,-95.58182622142637)});infowindow = new google.maps.InfoWindow({content:'<strong>Southern Maid Donuts Stafford</strong><br>12414 South Kirkwood Stafford, TX 77477<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+			    </span>
+
+		    	<span id="address" class="pull-right">
+		    	<br />
+		    		12414 South Kirkwood <br />
+		    		Stafford, TX 77577
+		    	</span>
+		    </div>
+		</div>
     </footer>
 </div>
 
