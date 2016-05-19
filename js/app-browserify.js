@@ -16,47 +16,32 @@ require("bootstrap")
 // var newJs = require('./kolaches');
 // var newJs = require('./kolaches').test;
 
-// just Node?
-// var fetch = require('node-fetch')
-// Browserify?
-// require('whatwg-fetch') //--> not a typo, don't store as a var
+/////////////Index////////////////////////////////////////////////////
 
-// other stuff that we don't really use in our own code
-// var Pace = require("../bower_components/pace/pace.js")
+$("#carousel-showcase").carousel();
+///////////////////Other Pages////////////////////////////////////////
 
-// require your own libraries, too!
-// var Router = require('./app.js')
-
-// window.addEventListener('load', app)
-
-// function app() {
-// start app
-// new Router()
-// }
+//-------side bar toggle--------//
+$('#nav-toggle').click(function(){
+	$('.side-nav').toggleClass('show-nav');
+	$('.all-donuts').toggleClass('move-for-nav');
+});
 
 // Backbone.Model.prototype.idAttribute = '_id';
 var clientid = 'ab1a596d4c80874';
-/////////////donuts//////////////////
-// var originalDonutArray = ['Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Maple Iced', 'Plain Sugar', 'Cinnamon Sugar', 'Powdered Sugar', 'Crumb'];
-// var cakeArray = ['Plain', 'Blueberry', 'Blueberry Glazed', 'Glazed', 'Chocolate Iced', 'Chocolate Sprinkle', 'Chocolate Coconut', 'Chocolate Nut', 'Strawberry Iced', 'Strawberry Sprinkle', 'White Iced', 'White Sprinkle', 'White Nut', 'White Coconut', 'Plain Sugar', 'Cinnamon Sugar'];
-// var buttermilkArray = ['Plain', 'Glazed', 'Chocolate Iced'];
-// var frenchCrullerArray = ['Glazed', 'Chocolate Iced'];
-// var bigRollArray = ['Eclair', 'Cinnamon Roll', 'Cinnamon Twist', 'Apple Fritter'];
-// var filledArray = ['Bavarian', 'Strawberry', 'Chocolate', 'Lemon'];
 
-var items = [
-    { itemType: 'original', name: 'Glazed' },
+// var items = [
+//     { itemType: 'original', name: 'Glazed' },
 
-    { itemType: 'original', name: 'Chocolate Iced' },
+//     { itemType: 'original', name: 'Chocolate Iced' },
 
-    { itemType: 'original', name: 'Chocolate Sprinkle' },
+//     { itemType: 'original', name: 'Chocolate Sprinkle' },
 
-    { itemType: 'cake', name: 'Plain' },
+//     { itemType: 'cake', name: 'Plain' },
 
-    { itemType: 'cake', name: 'Blueberry' }
-];
+//     { itemType: 'cake', name: 'Blueberry' }
+// ];
 
-$("#carousel-showcase").carousel();
 
 ///////////kolaches//////////////////
 // var kolachesArray = ['Sausage & Cheese', 'Jumbo Sausage & Cheese', 'Plain Sausage', 'Beef Sausage', 'Jalapeño Sausage & Cheese', 'Boudain Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
@@ -81,9 +66,6 @@ $("#carousel-showcase").carousel();
 // });
 ///////////models////////////////
 var ItemModel = Backbone.Model.extend({
-    // itemType: '',
-    // name: ''
-    //create a way to fetch items by array name
 
 });
 

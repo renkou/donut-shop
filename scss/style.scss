@@ -101,8 +101,9 @@ img {
  * YOUR CODE HERE
  */
 
-body {
-    position: relative;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .menu {
@@ -128,6 +129,82 @@ body {
         text-align: center;
     }
 }
+
+/* other pages */
+
+
+@media (min-width: 768px){
+    .side-nav {
+        position: fixed;
+        z-index: 1000;
+        float: left;
+    }
+
+    .all-donuts {
+        float: right;
+    }
+}
+
+/*top nav*/
+
+#top-nav{
+    visibility: hidden;
+}
+
+.move-for-nav {
+    margin-left: 20%;
+}
+
+@media (max-width: 767px){
+    .side-nav{
+        left: -100%;
+        position: fixed;
+        display: inline;
+        margin-top: 10%;
+    }
+
+    .show-nav {
+        left: 0 !important;
+        padding-left: 0;
+    }
+
+    #shop-logo{
+        /*width: 10%;*/
+    }
+
+    #top-nav{
+        visibility: visible;
+        display: block;
+        z-index: 1000;
+    }
+
+    .all-donuts{
+        margin-top: 10%;
+    }
+}
+
+/*end top nav*/
+
+.donut-content{
+    text-align: center;
+}
+
+.nav-item{
+    width: 190px;
+}
+
+@media (max-width: 991px){
+    .nav-item{
+        width: 135px;
+    }
+}
+
+@media (min-width: 768px){
+    #donuts-container{
+        margin-left: 1%;
+    }
+}
+
 
 /*///////////////////////////////////////////////////////////////////////*/
  /*#logo-container {
@@ -218,6 +295,7 @@ body {
 }*/
 
 /*about*/
+
 /*#about {
     background-color: lightgrey;
     position: absolute;
@@ -227,14 +305,15 @@ body {
 }
 
 */
+
 /*donut page*/
 
-/*.item-label {
+.item-label {
     color: green;
     font-size: 2em;
 }
 
-.donuts-wrapper {
+/*.donuts-wrapper {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
