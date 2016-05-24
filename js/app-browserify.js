@@ -21,11 +21,7 @@ require("bootstrap")
 $("#carousel-showcase").carousel();
 ///////////////////Other Pages////////////////////////////////////////
 
-//-------side bar toggle--------//
-$('#nav-toggle').click(function(){
-	$('.side-nav').toggleClass('show-nav');
-	$('.all-donuts').toggleClass('move-for-nav');
-});
+
 
 // Backbone.Model.prototype.idAttribute = '_id';
 var clientid = 'ab1a596d4c80874';
@@ -69,20 +65,14 @@ var ItemModel = Backbone.Model.extend({
 
 });
 
-var DonutModel = Backbone.Model.extend({
-
-});
-
 ///////collections/////////////////
 
-var DonutCollection = Backbone.Collection.extend({
-    model: DonutModel,
+var ItemCollection = Backbone.Collection.extend({
+    model: ItemModel,
 
     url: "https://api.imgur.com/3/album/iQVb1/images",
 
 });
-
-var donutCollection = new DonutCollection();
 
 /////////////////views/////////////////
 
@@ -93,8 +83,8 @@ var DonutView = Backbone.View.extend({
         var originalView = new OriginalListView();
         originalView.render();
 
-        var cakeView = new CakeListView();
-        cakeView.render();
+        var specialView = new specialListView();
+        specialView.render();
     }
 });
 
@@ -104,48 +94,48 @@ var OriginalListView = Backbone.View.extend({
     render: function() {
         var self = this;
 
-        var originalCollection = new DonutCollection();
+        var originalCollection = new ItemCollection();
 
         $.when(originalCollection.fetch({
         	headers: {
 		 		Authorization: 'Client-ID ' + clientid,
 				Accept: 'application/json'
 			}
-		})).done(function(DonutObject) {
-            var originalArray = _.filter(DonutObject.data, function(donut) {
-                return donut.description === 'original';
+		})).done(function(ItemObject) {
+            var originalArray = _.filter(ItemObject.data, function(item) {
+                return item.description === 'original';
             });
 
-            self.$el.html(self.donutTemplate({ donuts: originalArray }));
+            self.$el.html(self.itemTemplate({ items: originalArray }));
         });
     },
 
-    donutTemplate: _.template($('#donut-template').html(), {})
+    itemTemplate: _.template($('#item-template').html(), {})
 });
 
-var CakeListView = Backbone.View.extend({
-    el: '#cake-donuts',
+var specialListView = Backbone.View.extend({
+    el: '#special-donuts',
 
     render: function() {
         var self = this;
 
-        var cakeCollection = new DonutCollection();
+        var specialCollection = new ItemCollection();
 
-        $.when(cakeCollection.fetch({
+        $.when(specialCollection.fetch({
         	headers: {
 		 		Authorization: 'Client-ID ' + clientid,
 				Accept: 'application/json'
 			}
-		})).done(function(DonutObject) {
-            var cakeArray = _.filter(DonutObject.data, function(donut) {
-                return donut.description === 'cake';
+		})).done(function(ItemObject) {
+            var specialArray = _.filter(ItemObject.data, function(item) {
+                return item.description === 'special';
             });
 
-            self.$el.html(self.donutTemplate({ donuts: cakeArray }));
+            self.$el.html(self.itemTemplate({ items: specialArray }));
         });
     },
 
-    donutTemplate: _.template($('#donut-template').html(), {})
+    itemTemplate: _.template($('#item-template').html(), {})
 });
 
 var donutView = new DonutView();
