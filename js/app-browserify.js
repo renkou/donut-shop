@@ -75,9 +75,9 @@ var ItemCollection = Backbone.Collection.extend({
 });
 
 /////////////////views/////////////////
-
+//----------donuts.html------------------//
 var DonutView = Backbone.View.extend({
-    el: '#donuts-container',
+    el: '#items-container',
 
     initialize: function() {
         var originalView = new OriginalListView();
@@ -139,3 +139,44 @@ var specialListView = Backbone.View.extend({
 });
 
 var donutView = new DonutView();
+
+//-----donuts.html end------------//
+
+
+//--------kolaches.html------------//
+var KolacheView = Backbone.View.extend({
+    el: '#items-container',
+
+    initialize: function() {
+        var kolacheView = new KolahceListView();
+        originalView.render();
+    }
+});
+
+var KolacheListView = Backbone.View.extend({
+    el: '#kolaches-div',
+
+    render: function() {
+        var self = this;
+
+        var kolacheCollection = new ItemCollection();
+
+        $.when(kolacheCollection.fetch({
+        	headers: {
+		 		Authorization: 'Client-ID ' + clientid,
+				Accept: 'application/json'
+			}
+		})).done(function(ItemObject) {
+            var kolacheArray = _.filter(ItemObject.data, function(item) {
+                return item.description === 'kolache';
+            });
+
+            self.$el.html(self.itemTemplate({ items: kolacheArray }));
+        });
+    },
+
+    itemTemplate: _.template($('#item-template').html(), {})
+});
+
+var kolacheView = new KolacheView();
+//-------kolaches.html end---------////

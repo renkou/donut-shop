@@ -130,6 +130,17 @@ html, body {
     }
 }
 
+#filled-desc{
+    font-size: .75em;
+    font-style: italic;
+}
+
+.item-content {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    text-align: center;
+}
+
 /* other pages */
 
 
@@ -138,18 +149,34 @@ html, body {
         position: fixed;
         z-index: 1000;
         float: left;
+        background-color: #f6f6f6;
+        height: 100%;
+        width: 155px;
     }
 
     .all-items {
         float: right;
-        padding-left: 3%;
+        padding-left: 5%;
     }
 }
 
+@media (min-width: 992px){
+    .side-nav {
+        width: 205px;
+    }
+
+    .all-items {
+        padding-left: 5%;
+    }
+}
 /*top nav*/
 
 #top-nav{
     visibility: hidden;
+}
+
+.home-button {
+    color:green; 
 }
 
 .move-for-nav {
@@ -169,25 +196,31 @@ html, body {
 
     .all-items{
         margin-top: 13%;
+        width: 100%;
     }
 }
 
 /*end top nav*/
-
-.donut-content{
-    text-align: center;
-}
 
 .nav-item{
     width: 190px;
 }
 .nav-item-btn{
     width: 100%;
-    margin-top: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    background-color: #f6f6f6;
+    text-align: center;
+    color: green;
+    border-top: 1px solid lightgrey;
 }
 
-.nav-item-btn:focus{
-    background: lightblue;
+.more-items-link{
+    border-bottom: 1px solid lightgrey;
+}
+
+.nav-item-btn:active{
+    color: lightgreen;
 }
 
 #shop-logo-link{
