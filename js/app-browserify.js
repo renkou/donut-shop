@@ -149,7 +149,7 @@ var KolacheView = Backbone.View.extend({
 
     initialize: function() {
         var kolacheView = new KolahceListView();
-        originalView.render();
+        kolacheView.render();
     }
 });
 
@@ -178,5 +178,81 @@ var KolacheListView = Backbone.View.extend({
     itemTemplate: _.template($('#item-template').html(), {})
 });
 
-var kolacheView = new KolacheView();
+var kolachesView = new KolacheView();
 //-------kolaches.html end---------////
+
+//--------croissants.html------------//
+var CroissantView = Backbone.View.extend({
+    el: '#items-container',
+
+    initialize: function() {
+        var croissantView = new CroissantListView();
+        croissantView.render();
+    }
+});
+
+var CroissantListView = Backbone.View.extend({
+    el: '#croissants-div',
+
+    render: function() {
+        var self = this;
+
+        var croissantCollection = new ItemCollection();
+
+        $.when(croissantCollection.fetch({
+        	headers: {
+		 		Authorization: 'Client-ID ' + clientid,
+				Accept: 'application/json'
+			}
+		})).done(function(ItemObject) {
+            var croissantArray = _.filter(ItemObject.data, function(item) {
+                return item.description === 'croissant';
+            });
+
+            self.$el.html(self.itemTemplate({ items: croissantArray }));
+        });
+    },
+
+    itemTemplate: _.template($('#item-template').html(), {})
+});
+
+var croissantsView = new CroissantView();
+//-------croissants.html end---------////
+
+//--------moreitems.html------------//
+var MoreItemsView = Backbone.View.extend({
+    el: '#items-container',
+
+    initialize: function() {
+        var moreItemsView = new MoreItemsListView();
+        moreItemsView.render();
+    }
+});
+
+var MoreItemsListView = Backbone.View.extend({
+    el: '#more-items-div',
+
+    render: function() {
+        var self = this;
+
+        var moreItemsCollection = new ItemCollection();
+
+        $.when(moreItemsCollection.fetch({
+        	headers: {
+		 		Authorization: 'Client-ID ' + clientid,
+				Accept: 'application/json'
+			}
+		})).done(function(ItemObject) {
+            var moreItemsArray = _.filter(ItemObject.data, function(item) {
+                return item.description === 'moreItems';
+            });
+
+            self.$el.html(self.itemTemplate({ items: moreItemsArray }));
+        });
+    },
+
+    itemTemplate: _.template($('#item-template').html(), {})
+});
+
+var moreItemView = new MoreItemsView();
+//-------moreitems.html end---------////
