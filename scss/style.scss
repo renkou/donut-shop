@@ -106,8 +106,29 @@ html, body {
     overflow-x: hidden;
 }
 
+#carousel-container{
+    border-top: 3px solid green;
+    border-bottom: 3px solid green;
+    margin-top: 2%;
+}
+
+#about-container{
+    padding: 0;
+}
+
+#map {
+    width: 100%;
+}
+
+#info {
+    text-align: center;
+    margin-top: 2%;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
 .menu {
     margin-top: 20%;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .logo-text {
@@ -175,8 +196,15 @@ html, body {
     visibility: hidden;
 }
 
+.top-nav-item, .item-name{
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
 .home-button {
     color:green; 
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.3em;
 }
 
 .move-for-nav {
@@ -195,7 +223,7 @@ html, body {
     }
 
     .all-items{
-        margin-top: 13%;
+        margin-top: 60px;
         width: 100%;
     }
 }
@@ -213,6 +241,7 @@ html, body {
     text-align: center;
     color: green;
     border-top: 1px solid lightgrey;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .more-items-link{
@@ -345,6 +374,8 @@ html, body {
 .item-label {
     color: green;
     font-size: 2em;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: bold;
 }
 
 /*.donuts-wrapper {
