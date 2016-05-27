@@ -98,7 +98,7 @@ img {
     max-width: 100%;
 }
 /**
- * YOUR CODE HERE
+ * YOUR CODE HERE---------------------------------------
  */
 
 html, body {
@@ -134,6 +134,11 @@ html, body {
     margin-top: 20%;
     font-family: 'Merriweather Sans', sans-serif;
     width: 100%;
+    background-color: #e0e0e0;
+}
+
+.menu-link{
+    text-decoration: none!important;
 }
 
 .logo-text {
@@ -149,7 +154,7 @@ html, body {
         width: 100%;
     }
 
-    .menu-link{
+    .menu-container{
         width: 50%;
     }
 
