@@ -127,6 +127,7 @@ html, body {
     font-family: 'Merriweather Sans', sans-serif;
     color: white;
     background-color: green;
+    font-size: 1.2em;
 }
 
 .menu {
@@ -145,6 +146,10 @@ html, body {
         margin-top: 1%;
         margin-bottom: 1%;
         text-align: center;
+        width: 100%;
+    }
+
+    .menu-link{
         width: 50%;
     }
 
