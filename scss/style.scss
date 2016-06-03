@@ -204,6 +204,14 @@ html, body {
     display: none;
 }
 
+#croissants{
+    display: none;
+}
+
+#more-items{
+    display: none;
+}
+
 @media (min-width: 768px){
     .side-nav {
         position: fixed;

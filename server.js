@@ -38,13 +38,13 @@ function startServer() {
     app.use(express.static(path.join(__dirname, '')));
 
     //----------------------ROUTES-------------------//
-    app.get('/',function(req,res){
-        res.sendFile(path.join(__dirname+'/index.html'));
-    });
+    // app.get('/',function(req,res){
+    //     res.sendFile(path.join(__dirname+'/index.html'));
+    // });
 
-    app.get('/menu/',function(req,res){
-        res.sendFile(path.join(__dirname+'/donuts.html'));
-    });
+    // app.get('/menu/',function(req,res){
+    //     res.sendFile(path.join(__dirname+'/donuts.html'));
+    // });
 
     // app.get('/kolaches',function(req,res){
     //     res.sendFile(path.join(__dirname+'/kolaches.html'));
