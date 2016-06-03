@@ -310,3 +310,5 @@ $('.more-items-btn').click(function(){
 			$('#more-items').css({'display':'block'});
 		}
 });
+
+//what
