@@ -260,6 +260,16 @@ var moreItemView = new MoreItemsView();
 //-------------------class toggles----------------//
 //if button is clicked, toggle all other buttons to hide but display clicked
 //or make every div hidden and toggle display but then hide all others
+$('.menu').click(function(){
+	$('#landing-page').css({'display':'none'});
+	$('#menu-page').css({'display':'block'});
+});
+
+$('.landing-button').click(function(){
+	$('#landing-page').css({'display':'block'});
+	$('#menu-page').css({'display':'none'});
+});
+
 $('.donuts-btn').click(function(){
 	$('.nav-li').removeClass('active');
 	$('.top-donuts-nav').addClass('active');
@@ -270,6 +280,8 @@ $('.donuts-btn').click(function(){
 			$('#kolaches').css({'display':'none'});
 			$('#croissants').css({'display':'none'});
 			$('#more-items').css({'display':'none'});
+			$('#landing-page').css({'display':'none'});
+			$('#menu-page').css({'display':'block'});
 		}
 });
 
@@ -283,6 +295,8 @@ $('.kolaches-btn').click(function(){
 			$('#kolaches').css({'display':'block'});
 			$('#croissants').css({'display':'none'});
 			$('#more-items').css({'display':'none'});
+			$('#landing-page').css({'display':'none'});
+			$('#menu-page').css({'display':'block'});
 		}
 });
 
@@ -296,6 +310,8 @@ $('.croissants-btn').click(function(){
 			$('#kolaches').css({'display':'none'});
 			$('#croissants').css({'display':'block'});
 			$('#more-items').css({'display':'none'});
+			$('#landing-page').css({'display':'none'});
+			$('#menu-page').css({'display':'block'});
 		}
 });
 $('.more-items-btn').click(function(){
@@ -308,5 +324,7 @@ $('.more-items-btn').click(function(){
 			$('#kolaches').css({'display':'none'});
 			$('#croissants').css({'display':'none'});
 			$('#more-items').css({'display':'block'});
+			$('#landing-page').css({'display':'none'});
+			$('#menu-page').css({'display':'block'});
 		}
 });
