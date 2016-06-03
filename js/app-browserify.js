@@ -148,7 +148,7 @@ var KolacheView = Backbone.View.extend({
     el: '#items-container',
 
     initialize: function() {
-        var kolacheView = new KolahceListView();
+        var kolacheView = new KolacheListView();
         kolacheView.render();
     }
 });
