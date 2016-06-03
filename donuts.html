@@ -4,7 +4,7 @@
 <head>
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./dist/style.css">
+    <link rel="stylesheet" type="text/css" href="/dist/style.css">
     <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans' rel='stylesheet' type='text/css'>
 </head>
 
@@ -20,15 +20,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./index.html"><span class="home-button">Southern Maid Donuts</span></a>
+            <a class="navbar-brand" href="/"><span class="home-button">Southern Maid Donuts</span></a>
         </div>
         
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
             <ul class="nav navbar-nav">
-                <li class="active" data-toggle="collapse" data-target="#navbar"><a class="top-nav-item nav-donuts" href="./donuts.html">Donuts</a></li>
-                <li data-toggle="collapse" data-target="#navbar"><a class="top-nav-item nav-kolaches" href="./kolaches.html">Kolaches</a></li>
-                <li data-toggle="collapse" data-target="#navbar"><a class="top-nav-item nav-Croissants" href="./croissants.html">Croissants</a></li>
-                <li data-toggle="collapse" data-target="#navbar"><a class="top-nav-item nav-more-items"href="./moreitems.html">More Items</a></li>
+                <li class="nav-li top-donuts-nav active" data-toggle="pill" data-target="#navbar">
+                    <a class="top-nav-item nav-donuts donuts-btn" data-toggle="collapse" data-target="#navbar" href="#donuts">Donuts</a>
+                </li>
+                <li class="nav-li top-kolaches-nav" data-toggle="pill" data-target="#navbar">
+                    <a class="top-nav-item nav-kolaches kolaches-btn" data-toggle="collapse" data-target="#navbar" href="#kolaches">Kolaches</a>
+                </li>
+                <li class="nav-li top-croissants-nav" data-toggle="pill" data-target="#navbar">
+                    <a class="top-nav-item nav-croissants croissants-btn" data-toggle="collapse" data-target="#navbar" href="#croissants">Croissants</a>
+                </li>
+                <li class="nav-li top-more-items-nav" data-toggle="pill" data-target="#navbar">
+                    <a class="top-nav-item nav-more-items more-items-btn" data-toggle="collapse" data-target="#navbar" href="#moreitems">More Items</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -40,13 +48,13 @@
 <!-- side nav -->
 <div class="side-nav col-xs-2">
 	<ul class="nav">
-		<li class="nav-item"><a id="shop-logo-link"href="./index.html">
-			<img id="shop-logo" src="./img/logo.jpg" />
+		<li class="nav-item"><a id="shop-logo-link"href="/">
+			<img id="shop-logo" src="/img/logo.jpg" />
 		</a></li>
-        <li class="nav-item"><a class="nav-item-btn donuts-link" href="./donuts.html">Donuts</a></li>
-        <li class="nav-item"><a class="nav-item-btn kolaches-link" href="./kolaches.html">Kolaches</a></li>
-        <li class="nav-item"><a class="nav-item-btn croissants-link" href="./croissants.html">Croissants</a></li>
-        <li class="nav-item"><a class="nav-item-btn more-items-link" href="./moreitems.html">More Items</a></li>
+        <li class="nav-item"><a class="nav-item-btn donuts-link donuts-btn" href="#donuts">Donuts</a></li>
+        <li class="nav-item"><a class="nav-item-btn kolaches-link kolaches-btn" href="#kolaches">Kolaches</a></li>
+        <li class="nav-item"><a class="nav-item-btn croissants-link croissants-btn" href="#croissants">Croissants</a></li>
+        <li class="nav-item"><a class="nav-item-btn more-items-link more-items-btn" href="#moreitems">More Items</a></li>
 	</ul>
 </div>
 
@@ -54,15 +62,36 @@
 
 <div class="container all-items col-xs-10">
     <div id="items-container">
-        <div id="original-container">
-            <span class="item-label">Original Donuts</span>
-            <div id="original-donuts" class="row"></div>
+        <div id="donuts">
+            <div id="original-container">
+                <span class="item-label">Original Donuts</span>
+                <div id="original-donuts" class="row"></div>
+            </div>
+
+            <div id="special-container">
+                <span class="item-label">Specialty Donuts</span>
+                <div id="special-donuts" class="row"></div>
+                <span id="filled-desc">*: Fillings available - Bavarian, Chocolate, Strawberry, Lemon</span>
+            </div>
         </div>
 
-        <div id="special-container">
-            <span class="item-label">Specialty Donuts</span>
-            <div id="special-donuts" class="row"></div>
-            <span id="filled-desc">*: Fillings available - Bavarian, Chocolate, Strawberry, Lemon</span>
+        <div id="kolaches">
+            <span class="item-label">Kolaches</span>
+            <div id="kolaches-div" class="row"></div>
+        </div>
+
+        <div id="croissants">
+            <div id="croissant-container">
+                <span class="item-label">Croissants</span>
+                <div id="croissants-div" class="row"></div>
+            </div>
+        </div>
+
+        <div id="more-items">
+            <div id="more-item-container">
+                <span class="item-label">More Items</span>
+                <div id="more-items-div" class="row"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -71,14 +100,14 @@
         <div class="items-wrapper">
             <% _.each(items, function(item){ %>
                 <div class="item-content col-xs-6 col-sm-3">
-                    <img src="./img/<%= item.title %>.jpg" />
+                    <img src="/img/<%= item.title %>.jpg" />
                     <div class="item-name"><%= item.title %></div>
                 </div>
             <% }); %>
         </div>
     </script>
 
-    <script type="text/javascript" src="./dist/app-browserify.js"></script>
+    <script type="text/javascript" src="/dist/app-browserify.js"></script>
 </body>
 
 </html>

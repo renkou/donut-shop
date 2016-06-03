@@ -129,6 +129,11 @@ html, body {
     color: white;
     background-color: green;
     font-size: 1.4em;
+}
+
+#tel{
+    color: white;
+    border-bottom: 1px dashed white;
     text-decoration: none;
 }
 
@@ -185,6 +190,19 @@ html, body {
 
 /* other pages */
 
+/*-----kolaches------*/
+
+.hide-div{
+    display: none;
+}
+
+.show-div{
+    display: block;
+}
+
+#kolaches{
+    display: none;
+}
 
 @media (min-width: 768px){
     .side-nav {

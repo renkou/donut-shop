@@ -148,7 +148,7 @@ var KolacheView = Backbone.View.extend({
     el: '#items-container',
 
     initialize: function() {
-        var kolacheView = new KolahceListView();
+        var kolacheView = new KolacheListView();
         kolacheView.render();
     }
 });
@@ -256,3 +256,59 @@ var MoreItemsListView = Backbone.View.extend({
 
 var moreItemView = new MoreItemsView();
 //-------moreitems.html end---------////
+
+//-------------------class toggles----------------//
+//if button is clicked, toggle all other buttons to hide but display clicked
+//or make every div hidden and toggle display but then hide all others
+$('.donuts-btn').click(function(){
+	$('.nav-li').removeClass('active');
+	$('.top-donuts-nav').addClass('active');
+
+	if($('#donuts').css({'display': 'none'}))
+		{
+			$('#donuts').css({'display':'block'});
+			$('#kolaches').css({'display':'none'});
+			$('#croissants').css({'display':'none'});
+			$('#more-items').css({'display':'none'});
+		}
+});
+
+$('.kolaches-btn').click(function(){
+	$('.nav-li').removeClass('active');
+	$('.top-kolaches-nav').addClass('active');
+
+	if($('#kolaches').css({'display': 'none'}))
+		{
+			$('#donuts').css({'display':'none'});
+			$('#kolaches').css({'display':'block'});
+			$('#croissants').css({'display':'none'});
+			$('#more-items').css({'display':'none'});
+		}
+});
+
+$('.croissants-btn').click(function(){
+	$('.nav-li').removeClass('active');
+	$('.top-croissants-nav').addClass('active');
+
+	if($('#croissants').css({'display': 'none'}))
+		{
+			$('#donuts').css({'display':'none'});
+			$('#kolaches').css({'display':'none'});
+			$('#croissants').css({'display':'block'});
+			$('#more-items').css({'display':'none'});
+		}
+});
+$('.more-items-btn').click(function(){
+	$('.nav-li').removeClass('active');
+	$('.top-more-items-nav').addClass('active');
+
+	if($('#more-items').css({'display': 'none'}))
+		{
+			$('#donuts').css({'display':'none'});
+			$('#kolaches').css({'display':'none'});
+			$('#croissants').css({'display':'none'});
+			$('#more-items').css({'display':'block'});
+		}
+});
+
+//test
