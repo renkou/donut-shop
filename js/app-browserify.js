@@ -80,12 +80,16 @@ var DonutView = Backbone.View.extend({
     el: '#items-container',
 
     initialize: function() {
+        this.$el.html(this.donutTemplate({}));
+
         var originalView = new OriginalListView();
         originalView.render();
 
         var specialView = new specialListView();
         specialView.render();
-    }
+    },
+
+    donutTemplate: _.template($('#donut-template').html())
 });
 
 var OriginalListView = Backbone.View.extend({
@@ -148,9 +152,13 @@ var KolacheView = Backbone.View.extend({
     el: '#items-container',
 
     initialize: function() {
+    	this.$el.html(this.kolacheTemplate({}));
+
         var kolacheView = new KolacheListView();
         kolacheView.render();
-    }
+    },
+
+    kolacheTemplate: _.template($('#kolache-template').html())
 });
 
 var KolacheListView = Backbone.View.extend({
@@ -186,9 +194,13 @@ var CroissantView = Backbone.View.extend({
     el: '#items-container',
 
     initialize: function() {
+    	this.$el.html(this.croissantTemplate({}));
+
         var croissantView = new CroissantListView();
         croissantView.render();
-    }
+    },
+
+    croissantTemplate: _.template($('#croissant-template').html())
 });
 
 var CroissantListView = Backbone.View.extend({
@@ -224,9 +236,13 @@ var MoreItemsView = Backbone.View.extend({
     el: '#items-container',
 
     initialize: function() {
+    	this.$el.html(this.moreItemsTemplate({}));
+    	  
         var moreItemsView = new MoreItemsListView();
         moreItemsView.render();
-    }
+    },
+
+    moreItemsTemplate: _.template($('#more-items-template').html())
 });
 
 var MoreItemsListView = Backbone.View.extend({
@@ -253,7 +269,7 @@ var MoreItemsListView = Backbone.View.extend({
 
     itemTemplate: _.template($('#item-template').html(), {})
 });
-
+//-------------end moreitems-----------------//
 
 var OverAllView = Backbone.View.extend({
     el: '#overall-div',
@@ -265,12 +281,27 @@ var OverAllView = Backbone.View.extend({
     homeTemplate: _.template($('#home-template').html())
 
 });
+
+var OverAllMenuView = Backbone.View.extend({
+    el: '#menu-page',
+
+    render: function() {
+    	this.$el.html(this.overallTemplate({}));
+    },
+
+    overallTemplate: _.template($('#menu-template').html())
+
+});
 // var moreItemView = new MoreItemsView();
 //-------moreitems.html end---------////
 
 var DonutRouter = Backbone.Router.extend({
     routes: {
-        "donut": "donut",
+        "menu": "menu",
+        "donuts": "donuts",
+        "kolaches": "kolaches",
+        "croissants": "croissants",
+        "moreitems": "moreitems",
         "*default": "home"
     },
 
@@ -279,10 +310,35 @@ var DonutRouter = Backbone.Router.extend({
     	overAll.render();
     },
 
-    donut: function(){
+    menu: function(){
+        var overallmenu = new OverAllMenuView();
+        overallmenu.render();
         var donutView = new DonutView();
     },
 
+    donuts: function(){
+    	// var overallmenu = new OverAllMenuView();
+     //    overallmenu.render();
+    	var donutView = new DonutView();
+    },
+
+    kolaches: function(){
+    	// var overallmenu = new OverAllMenuView();
+     //    overallmenu.render();
+    	var kolachesView = new KolacheView();
+    },
+
+    croissants: function(){
+    	// var overallmenu = new OverAllMenuView();
+     //    overallmenu.render();
+    	var croissantsView = new CroissantView();
+    },
+
+    moreitems: function(){
+    	// var overallmenu = new OverAllMenuView();
+     //    overallmenu.render();
+    	var moreItemView = new MoreItemsView();
+    },
 
     initialize: function(){
         Backbone.history.start();
@@ -291,74 +347,3 @@ var DonutRouter = Backbone.Router.extend({
 
 var router = new DonutRouter();
 console.log(router);
-//-------------------class toggles----------------//
-//if button is clicked, toggle all other buttons to hide but display clicked
-//or make every div hidden and toggle display but then hide all others
-$('.menu').click(function(){
-	$('#home').css({'display':'none'});
-	$('#menu-page').css({'display':'block'});
-});
-
-$('.landing-button').click(function(){
-	$('#home').css({'display':'block'});
-	$('#menu-page').css({'display':'none'});
-});
-
-$('.donuts-btn').click(function(){
-	$('.nav-li').removeClass('active');
-	$('.top-donuts-nav').addClass('active');
-
-	if($('#donuts').css({'display': 'none'}))
-		{
-			$('#donuts').css({'display':'block'});
-			$('#kolaches').css({'display':'none'});
-			$('#croissants').css({'display':'none'});
-			$('#more-items').css({'display':'none'});
-			$('#home').css({'display':'none'});
-			$('#menu-page').css({'display':'block'});
-		}
-});
-
-$('.kolaches-btn').click(function(){
-	$('.nav-li').removeClass('active');
-	$('.top-kolaches-nav').addClass('active');
-
-	if($('#kolaches').css({'display': 'none'}))
-		{
-			$('#donuts').css({'display':'none'});
-			$('#kolaches').css({'display':'block'});
-			$('#croissants').css({'display':'none'});
-			$('#more-items').css({'display':'none'});
-			$('#home').css({'display':'none'});
-			$('#menu-page').css({'display':'block'});
-		}
-});
-
-$('.croissants-btn').click(function(){
-	$('.nav-li').removeClass('active');
-	$('.top-croissants-nav').addClass('active');
-
-	if($('#croissants').css({'display': 'none'}))
-		{
-			$('#donuts').css({'display':'none'});
-			$('#kolaches').css({'display':'none'});
-			$('#croissants').css({'display':'block'});
-			$('#more-items').css({'display':'none'});
-			$('#home').css({'display':'none'});
-			$('#menu-page').css({'display':'block'});
-		}
-});
-$('.more-items-btn').click(function(){
-	$('.nav-li').removeClass('active');
-	$('.top-more-items-nav').addClass('active');
-
-	if($('#more-items').css({'display': 'none'}))
-		{
-			$('#donuts').css({'display':'none'});
-			$('#kolaches').css({'display':'none'});
-			$('#croissants').css({'display':'none'});
-			$('#more-items').css({'display':'block'});
-			$('#home').css({'display':'none'});
-			$('#menu-page').css({'display':'block'});
-		}
-});
