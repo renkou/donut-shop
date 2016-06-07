@@ -52,14 +52,6 @@ var clientid = 'ab1a596d4c80874';
 
 /////////////////////////////////////////////////
 
-/////////////filter items/////////
-// var originalList = _.filter(items, function(donut){
-// 	return donut.itemType === 'original';
-// });
-
-// var cakeList = _.filter(items, function(donut){
-// 	return donut.itemType === 'cake';
-// });
 ///////////models////////////////
 var ItemModel = Backbone.Model.extend({
 
@@ -237,7 +229,7 @@ var MoreItemsView = Backbone.View.extend({
 
     initialize: function() {
     	this.$el.html(this.moreItemsTemplate({}));
-    	  
+
         var moreItemsView = new MoreItemsListView();
         moreItemsView.render();
     },
@@ -274,16 +266,23 @@ var MoreItemsListView = Backbone.View.extend({
 var OverAllView = Backbone.View.extend({
     el: '#overall-div',
 
+    initialize: function(){
+    	this.render();
+    },
+
     render: function() {
     	this.$el.html(this.homeTemplate({}));
     },
 
-    homeTemplate: _.template($('#home-template').html())
-
+    homeTemplate: _.template($('#home-template').html()),
 });
 
 var OverAllMenuView = Backbone.View.extend({
-    el: '#menu-page',
+    el: '#overall-div',
+
+    initialize: function(){
+    	this.render();
+    },
 
     render: function() {
     	this.$el.html(this.overallTemplate({}));
@@ -307,36 +306,30 @@ var DonutRouter = Backbone.Router.extend({
 
     home: function(){
     	var overAll = new OverAllView();
-    	overAll.render();
     },
 
     menu: function(){
-        var overallmenu = new OverAllMenuView();
-        overallmenu.render();
+        var overAllMenu = new OverAllMenuView();
         var donutView = new DonutView();
     },
 
     donuts: function(){
-    	// var overallmenu = new OverAllMenuView();
-     //    overallmenu.render();
+    	// DonutView.closeView();
     	var donutView = new DonutView();
     },
 
     kolaches: function(){
-    	// var overallmenu = new OverAllMenuView();
-     //    overallmenu.render();
+    	// KolacheView.closeView();
     	var kolachesView = new KolacheView();
     },
 
     croissants: function(){
-    	// var overallmenu = new OverAllMenuView();
-     //    overallmenu.render();
+    	// CroissantView.closeView();
     	var croissantsView = new CroissantView();
     },
 
     moreitems: function(){
-    	// var overallmenu = new OverAllMenuView();
-     //    overallmenu.render();
+    	// MoreItemsView.closeView();
     	var moreItemView = new MoreItemsView();
     },
 
@@ -345,5 +338,6 @@ var DonutRouter = Backbone.Router.extend({
     }
 })
 
+//--------------------end--------------------------//
 var router = new DonutRouter();
 console.log(router);
