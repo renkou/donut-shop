@@ -12,6 +12,7 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 
 require("bootstrap")
+var googleMap = require('../googlemap.js')
 //use function like this to import other js files or functions
 // var newJs = require('./kolaches');
 // var newJs = require('./kolaches').test;
@@ -274,7 +275,7 @@ var OverAllView = Backbone.View.extend({
     	this.$el.html(this.homeTemplate({}));
     },
 
-    homeTemplate: _.template($('#home-template').html()),
+    homeTemplate: _.template($('#home-template').html())
 });
 
 var OverAllMenuView = Backbone.View.extend({
@@ -289,10 +290,11 @@ var OverAllMenuView = Backbone.View.extend({
     },
 
     overallTemplate: _.template($('#menu-template').html())
-
 });
 // var moreItemView = new MoreItemsView();
 //-------moreitems.html end---------////
+
+var storeMap;
 
 var DonutRouter = Backbone.Router.extend({
     routes: {
@@ -306,6 +308,13 @@ var DonutRouter = Backbone.Router.extend({
 
     home: function(){
     	var overAll = new OverAllView();
+    	
+    	// var delay = 1000;
+
+    	// setTimeout(function(){
+    	// 	storeMap = $('#map-container').html();	
+	    // 	console.log(storeMap);
+    	// }, delay);
     },
 
     menu: function(){
@@ -315,21 +324,25 @@ var DonutRouter = Backbone.Router.extend({
 
     donuts: function(){
     	// DonutView.closeView();
+    	var overAllMenu = new OverAllMenuView();
     	var donutView = new DonutView();
     },
 
     kolaches: function(){
     	// KolacheView.closeView();
+    	var overAllMenu = new OverAllMenuView();
     	var kolachesView = new KolacheView();
     },
 
     croissants: function(){
     	// CroissantView.closeView();
+    	var overAllMenu = new OverAllMenuView();
     	var croissantsView = new CroissantView();
     },
 
     moreitems: function(){
     	// MoreItemsView.closeView();
+    	var overAllMenu = new OverAllMenuView();
     	var moreItemView = new MoreItemsView();
     },
 
@@ -338,6 +351,15 @@ var DonutRouter = Backbone.Router.extend({
     }
 })
 
+
 //--------------------end--------------------------//
 var router = new DonutRouter();
-console.log(router);
+router.on('route:home', function () {
+	// var g = new googleMap();
+	// $(g).trigger('loadMap');
+	// console.log('test');
+	location.reload(true);
+	// $('#map-container').html(storeMap);
+
+	
+})
