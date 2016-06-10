@@ -153,30 +153,6 @@ html, body {
     padding-left: 10%;
 }
 
-@media (max-width: 767px) {
-    .menu{
-        margin-top: 1%;
-        margin-bottom: 1%;
-        text-align: center;
-        width: 100%;
-    }
-
-    .menu-container{
-        width: 50%;
-    }
-
-    .logo-text {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    #info{
-        font-size: 1.2em;
-    }
-}
-
 #filled-desc{
     font-size: .75em;
     font-style: italic;
@@ -192,51 +168,6 @@ html, body {
 
 /*-----kolaches------*/
 
-.hide-div{
-    display: none;
-}
-
-.show-div{
-    display: block;
-}
-
-#kolaches{
-    display: none;
-}
-
-#croissants{
-    display: none;
-}
-
-#more-items{
-    display: none;
-}
-
-@media (min-width: 768px){
-    .side-nav {
-        position: fixed;
-        z-index: 1000;
-        float: left;
-        background-color: #f6f6f6;
-        height: 100%;
-        width: 155px;
-    }
-
-    .all-items {
-        float: right;
-        padding-left: 5%;
-    }
-}
-
-@media (min-width: 992px){
-    .side-nav {
-        width: 205px;
-    }
-
-    .all-items {
-        padding-left: 5%;
-    }
-}
 /*top nav*/
 
 #top-nav{
@@ -317,8 +248,71 @@ html, body {
     #donuts-container{
         margin-left: 1%;
     }
+
+    .side-nav {
+        position: fixed;
+        z-index: 1000;
+        float: left;
+        background-color: #f6f6f6;
+        height: 100%;
+        width: 155px;
+    }
+
+    .all-items {
+        float: left;
+        left: 150px;
+    }
 }
 
+@media (min-width: 992px){
+    .side-nav {
+        width: 205px;
+    }
+
+    .all-items {
+        left: 205px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu{
+        margin-top: 1%;
+        margin-bottom: 1%;
+        text-align: center;
+        width: 100%;
+    }
+
+    .menu-container{
+        width: 50%;
+    }
+
+    .logo-text {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    #info{
+        font-size: 1.2em;
+    }
+}
+
+.gmap-styles{
+    overflow:hidden;
+    height:375px;
+    width:100%;
+}
+
+#gmap_canvas{
+     height:375px;
+     width:100%;
+}
+#gmap_canvas img {
+    max-width: none!important;
+    background: none!important
+}
 
 /*///////////////////////////////////////////////////////////////////////*/
  /*#logo-container {

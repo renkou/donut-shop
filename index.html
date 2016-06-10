@@ -12,10 +12,8 @@
     <div id="overall-div">
     </div>
     <!--///////////////////////MENU///////////////////////////////////////////-->
-    <div id="menu-page">
-    </div>
     <script id="home-template" type="text/template">
-        <div id="home">
+        <div id="home-container">
             <div class="container">
                 <div id="logo-container" class="row">
                     <div class="col-sm-2">
@@ -68,18 +66,10 @@
             </div>
             <div id="about-container" class="container-fluid">
                 <div class="row">
-                    <div id="map" class="col-sm-12">
+                    <div id="map-container" class="col-sm-12">
                         <div class="center-block">
-                            <div style='overflow:hidden;height:375px;width:100%;'>
-                                <div id='gmap_canvas' style='height:375px;width:100%;'></div>
-                                <div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div>
-                                <div><small></small></div>
-                                <style>
-                                #gmap_canvas img {
-                                    max-width: none!important;
-                                    background: none!important
-                                }
-                                </style>
+                            <div class="gmap-styles1">
+                                <div id='gmap_canvas'></div>
                             </div>
                         </div>
                     </div>
@@ -190,7 +180,7 @@
     <script id="item-template" type="text/template">
         <div class="items-wrapper">
             <% _.each(items, function(item){ %>
-                <div class="item-content col-xs-6 col-sm-3">
+                <div class="item-content col-xs-6 col-sm-4 col-md-3">
                     <img src="./img/<%= item.title %>.jpg" />
                     <div class="item-name">
                         <%= item.title %>
@@ -204,16 +194,18 @@
     function init_map() {
         var myOptions = {
             zoom: 16,
-            center: new google.maps.LatLng(29.642580252770323, -95.58182622142637),
+            center: new google.maps.LatLng(29.642580252770323, -95.58262622142637),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: false,
             draggable: false,
-            disableDefaultUI: true /*added scrollwheel:false draggable:false disableDefaultUI:true*/
+            disableDoubleClickZoom: true,
+            disableDefaultUI:true
+            /*added scrollwheel:false draggable:false disableDefaultUI:true*/
         };
         map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
         marker = new google.maps.Marker({
             map: map,
-            position: new google.maps.LatLng(29.642580252770323, -95.58182622142637)
+            position: new google.maps.LatLng(29.642580252770323, -95.58262622142637)
         });
         infowindow = new google.maps.InfoWindow({
             content: '<strong>Southern Maid Donuts Stafford</strong><br>12414 South Kirkwood Stafford, TX 77477<br>'
@@ -229,3 +221,5 @@
 </body>
 
 </html>
+
+
