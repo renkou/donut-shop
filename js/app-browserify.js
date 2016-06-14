@@ -12,7 +12,6 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 
 require("bootstrap")
-var googleMap = require('../googlemap.js')
 //use function like this to import other js files or functions
 // var newJs = require('./kolaches');
 // var newJs = require('./kolaches').test;
@@ -39,9 +38,6 @@ var clientid = 'ab1a596d4c80874';
 //     { itemType: 'cake', name: 'Blueberry' }
 // ];
 
-
-///////////kolaches//////////////////
-// var kolachesArray = ['Sausage & Cheese', 'Jumbo Sausage & Cheese', 'Plain Sausage', 'Beef Sausage', 'Jalapeño Sausage & Cheese', 'Boudain Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
 
 ///////////croissants////////////////
 // var croissantsArray = ['Bacon, Egg & Cheese', 'Sausage Patty, Egg & Cheese', 'Plain', 'Sausage & Cheese', 'Jalapeño Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
