@@ -16,11 +16,8 @@ require("bootstrap")
 // var newJs = require('./kolaches');
 // var newJs = require('./kolaches').test;
 
-/////////////Index////////////////////////////////////////////////////
 
 $("#carousel-showcase").carousel();
-///////////////////Other Pages////////////////////////////////////////
-
 
 
 // Backbone.Model.prototype.idAttribute = '_id';
@@ -37,17 +34,6 @@ var clientid = 'ab1a596d4c80874';
 
 //     { itemType: 'cake', name: 'Blueberry' }
 // ];
-
-
-///////////croissants////////////////
-// var croissantsArray = ['Bacon, Egg & Cheese', 'Sausage Patty, Egg & Cheese', 'Plain', 'Sausage & Cheese', 'Jalapeño Sausage & Cheese', 'Ham & Cheese', 'Jalapeño Ham & Cheese'];
-
-///////////more items////////////////
-// var moreItemsArray =  ['Sausage, Egg & Cheese Biscuit', 'Cream Cheese Danish', 'Donut Holes', 'Community Coffee','Cappachinos'];
-// var burritosArray = ['Sausage, Egg & Cheese', 'Bacon, Egg & Cheese', 'Potato, Egg & Cheese'];
-// var muffinsArray = ['Blueberry', 'Banana', 'Chocolate'];
-
-/////////////////////////////////////////////////
 
 ///////////models////////////////
 var ItemModel = Backbone.Model.extend({
@@ -131,8 +117,6 @@ var specialListView = Backbone.View.extend({
     itemTemplate: _.template($('#item-template').html(), {})
 });
 
-// var donutView = new DonutView();
-
 //-----donuts.html end------------//
 
 
@@ -175,7 +159,6 @@ var KolacheListView = Backbone.View.extend({
     itemTemplate: _.template($('#item-template').html(), {})
 });
 
-// var kolachesView = new KolacheView();
 //-------kolaches.html end---------////
 
 //--------croissants.html------------//
@@ -217,7 +200,6 @@ var CroissantListView = Backbone.View.extend({
     itemTemplate: _.template($('#item-template').html(), {})
 });
 
-// var croissantsView = new CroissantView();
 //-------croissants.html end---------////
 
 //--------moreitems.html------------//
@@ -260,6 +242,7 @@ var MoreItemsListView = Backbone.View.extend({
 });
 //-------------end moreitems-----------------//
 
+//-------------overall-div views-----------//
 var OverAllView = Backbone.View.extend({
     el: '#overall-div',
 
@@ -287,10 +270,10 @@ var OverAllMenuView = Backbone.View.extend({
 
     overallTemplate: _.template($('#menu-template').html())
 });
-// var moreItemView = new MoreItemsView();
-//-------moreitems.html end---------////
 
-var storeMap;
+//----------end overall-div views--------//
+
+//----------start router------------//
 
 var DonutRouter = Backbone.Router.extend({
     routes: {
@@ -304,13 +287,14 @@ var DonutRouter = Backbone.Router.extend({
 
     home: function(){
     	var overAll = new OverAllView();
-    	
-    	// var delay = 1000;
 
-    	// setTimeout(function(){
-    	// 	storeMap = $('#map-container').html();	
-	    // 	console.log(storeMap);
-    	// }, delay);
+    	google.maps.event.addDomListener(window, 'load', init_map);
+    	
+    	google.maps.event.addDomListener(window, "resize", function() {
+		    var center = map.getCenter();
+		    google.maps.event.trigger(map, "resize");
+		    map.setCenter(center); 
+		});
     },
 
     menu: function(){
@@ -319,25 +303,21 @@ var DonutRouter = Backbone.Router.extend({
     },
 
     donuts: function(){
-    	// DonutView.closeView();
     	var overAllMenu = new OverAllMenuView();
     	var donutView = new DonutView();
     },
 
     kolaches: function(){
-    	// KolacheView.closeView();
     	var overAllMenu = new OverAllMenuView();
     	var kolachesView = new KolacheView();
     },
 
     croissants: function(){
-    	// CroissantView.closeView();
     	var overAllMenu = new OverAllMenuView();
     	var croissantsView = new CroissantView();
     },
 
     moreitems: function(){
-    	// MoreItemsView.closeView();
     	var overAllMenu = new OverAllMenuView();
     	var moreItemView = new MoreItemsView();
     },
@@ -351,11 +331,5 @@ var DonutRouter = Backbone.Router.extend({
 //--------------------end--------------------------//
 var router = new DonutRouter();
 router.on('route:home', function () {
-	// var g = new googleMap();
-	// $(g).trigger('loadMap');
-	// console.log('test');
 	location.reload(true);
-	// $('#map-container').html(storeMap);
-
-	
-})
+});
