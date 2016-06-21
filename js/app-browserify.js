@@ -331,5 +331,5 @@ var DonutRouter = Backbone.Router.extend({
 //--------------------end--------------------------//
 var router = new DonutRouter();
 router.on('route:home', function () {
-	location.reload(true);
+	google.maps.event.trigger(window, "load");
 });
