@@ -166,8 +166,6 @@ html, body {
 
 /* other pages */
 
-/*-----kolaches------*/
-
 /*top nav*/
 
 #top-nav{
@@ -176,6 +174,10 @@ html, body {
 
 .top-nav-item, .item-name{
     font-family: 'Merriweather Sans', sans-serif;
+}
+
+.item-name{
+    height: 40px;
 }
 
 .home-button {
@@ -259,7 +261,6 @@ html, body {
     }
 
     .all-items {
-        float: left;
         left: 150px;
     }
 }
@@ -314,122 +315,9 @@ html, body {
     background: none!important
 }
 
-/*///////////////////////////////////////////////////////////////////////*/
- /*#logo-container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background-color: #f6f6f6;
- }*/
-
-/*#shop-logo {
-    width: 5%;
-    height: 5%;
-}*/
-
-/*.nav {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background-color: #f6f6f6;
-}*/
-
-/*Home page*/
-
-/*#products-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#donuts-link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-#donuts-img {
-    width: 80%;
-    height: 80%;
-    overflow: hidden;
-    align-self: center;
-}
-
-#kolaches-link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-#kolaches-img {
-    width: 80%;
-    height: 80%;
-    overflow: hidden;
-    align-self: center;
-}
-
-#croissants-link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-#croissants-img {
-    width: 80%;
-    height: 80%;
-    overflow: hidden;
-    align-self: center;
-}
-
-#burritos-link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 40%;
-}
-
-#burritos-img {
-    width: 80%;
-    height: 80%;
-    overflow: hidden;
-    align-self: center;
-}*/
-
-/*about*/
-
-/*#about {
-    background-color: lightgrey;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 10%;
-}
-
-*/
-
-/*donut page*/
-
 .item-label {
     color: green;
     font-size: 2em;
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: bold;
 }
-
-/*.donuts-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
-.donuts-content {
-    display: flex;
-    flex-direction: column;
-}*/

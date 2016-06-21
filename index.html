@@ -165,28 +165,28 @@
     <script id="donut-template" type="text/template">
         <div id="donuts-wrapper">
             <div id="original-container">
-                <span class="item-label">Original Donuts</span>
+                <div class="item-label">Original Donuts</div>
                 <div id="original-donuts" class="row"></div>
             </div>
             <div id="special-container">
-                <span class="item-label">Specialty Donuts</span>
+                <div class="item-label">Specialty Donuts</div>
                 <div id="special-donuts" class="row"></div>
-                <span class="filled-desc">
+                <div class="filled-desc">
                 	*: Fillings available - Bavarian, Chocolate, Strawberry, Lemon
-                </span>
+                </div>
             </div>
         </div>
     </script>
     <script id="kolache-template" type="text/template">
         <div id="kolaches-wrapper">
-            <span class="item-label">Kolaches</span>
+            <div class="item-label">Kolaches</div>
             <div id="kolaches-div" class="row"></div>
         </div>
     </script>
     <script id="croissant-template" type="text/template">
         <div id="croissants-wrapper">
             <div id="croissant-container">
-                <span class="item-label">Croissants</span>
+                <div class="item-label">Croissants</div>
                 <div id="croissants-div" class="row"></div>
             </div>
         </div>
@@ -194,11 +194,11 @@
     <script id="more-items-template" type="text/template">
         <div id="more-items-wrapper">
             <div id="more-item-container">
-                <span class="item-label">More Items</span>
+                <div class="item-label">More Items</div>
                 <div id="more-items-div" class="row"></div>
-                <span class="filled-desc">
+                <div class="filled-desc">
                 	*: Flavors available - Hot Chocolate, French Vanilla, Mocha
-                </span>
+                </div>
             </div>
         </div>
     </script>
@@ -240,7 +240,6 @@
         });
         infowindow.open(map, marker);
     }
-    google.maps.event.addDomListener(window, 'load', init_map);
     </script>
     <script type="text/javascript" src="./dist/app-browserify.js"></script>
 </body>

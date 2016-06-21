@@ -37,27 +37,6 @@ function startServer() {
     // app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, '')));
 
-    //----------------------ROUTES-------------------//
-    // app.get('/',function(req,res){
-    //     res.sendFile(path.join(__dirname+'/index.html'));
-    // });
-
-    // app.get('/menu/',function(req,res){
-    //     res.sendFile(path.join(__dirname+'/donuts.html'));
-    // });
-
-    // app.get('/kolaches',function(req,res){
-    //     res.sendFile(path.join(__dirname+'/kolaches.html'));
-    // });
-
-    // app.get('/croissants',function(req,res){
-    //     res.sendFile(path.join(__dirname+'/croissants.html'));
-    // });
-
-    // app.get('/moreitems',function(req,res){
-    //     res.sendFile(path.join(__dirname+'/moreitems.html'));
-    // });
-
     // var uriString = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL
     // mongoose.connect('mongodb://localhost/donutshopitems');
 
