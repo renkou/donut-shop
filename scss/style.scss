@@ -140,7 +140,7 @@ html, body {
 .menu {
     margin-top: 20%;
     font-family: 'Merriweather Sans', sans-serif;
-    width: 100%;
+    width: 80%;
     background-color: #e0e0e0;
 }
 
@@ -215,8 +215,6 @@ html, body {
 }
 .nav-item-btn{
     width: 100%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
     background-color: #f6f6f6;
     text-align: center;
     color: green;
@@ -299,6 +297,16 @@ html, body {
         font-size: 1.2em;
     }
 }
+
+.side-nav{
+    padding: 0;
+}
+
+.nav-item{
+    margin-right: 0;
+    width: 100%;
+}
+
 
 .gmap-styles{
     overflow:hidden;
